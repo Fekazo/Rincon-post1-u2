@@ -50,3 +50,14 @@ Alcance: solo los tres flujos definidos, mínimo 10 hallazgos, mínimo 5 heurís
 | 10        | H5-B   | H5 - Prevención de errores                      | 2               | Errores frecuentes al escribir hashtags sin ayuda                   | Activar autocorrección fuerte y mostrar sugerencias populares                                        |
 | 11        | H7-B   | H7 - Flexibilidad y eficiencia de uso           | 2               | Tener que bajar mucho para cambiar de Reels a Feed                  | Agregar doble toque en barra inferior o gesto de swipe para cambiar rápido                           |
 | 12        | H10-C  | H10 - Ayuda y documentación                     | 1               | Ninguna ayuda contextual en opciones de privacidad                  | Agregar pequeños iconos de “?” con tooltip o enlace a explicación                                    |
+## 5. Análisis de patrones
+- **Patrón 1 (más grave):** Violación sistemática de **H4 - Consistencia y estándares** en los 3 flujos. Instagram cambia constantemente la ubicación y apariencia de iconos y botones. Esto genera una curva de aprendizaje innecesaria.
+- **Patrón 2:** Falta de **H3 y H9** en acciones irreversibles (bloquear, errores de login, eliminación). El usuario queda sin control ni ayuda clara, lo que genera frustración y posible abandono.
+
+## 6. Conclusiones
+Instagram sigue siendo una de las apps más usadas gracias a su diseño visual y algoritmo, pero su usabilidad real es solo media-alta. Los problemas detectados son fáciles de corregir y tendrían un impacto inmediato en retención de usuarios nuevos y satisfacción diaria. 
+
+Recomendaciones prioritarias: 
+1. Estandarizar iconos y botones (H4)  
+2. Implementar “Deshacer” en acciones críticas (H3)  
+3. Mejorar feedback y ayuda contextual (H1 y H9)
