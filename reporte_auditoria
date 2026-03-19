@@ -4,3 +4,49 @@
 **Asignatura:** Aplicaciones Móviles  
 **Fecha:** 18 de marzo de 2026  
 **App evaluada:** Instagram versión 421.0.0.51.66 (Android)
+## 1. Resumen ejecutivo 
+Se realizó una auditoría heurística completa sobre la aplicación Instagram (v350.0.0.0.0 en Android) siguiendo las 10 heurísticas de Nielsen. Se evaluaron tres flujos críticos: **Flujo A (Registro y Onboarding)**, **Flujo B (Búsqueda y Exploración)** y **Flujo C (Perfil y Configuración)**. Se identificaron **12 hallazgos** que violan 8 heurísticas diferentes, con 3 de severidad 4 (catastróficos). 
+
+El problema más crítico es la **inconsistencia de iconos y botones entre pantallas** (H4 - severidad 4), que genera confusión constante al cambiar entre Feed, Reels y Perfil. Otro hallazgo grave es la falta de control y libertad al bloquear usuarios (H3 - severidad 4). 
+
+En general, Instagram destaca por su estética atractiva y velocidad, pero presenta problemas de usabilidad que afectan especialmente a usuarios nuevos y a la experiencia diaria. La nota estimada de usabilidad es 7.2/10. Recomendación principal: estandarizar todos los iconos y agregar botones “Deshacer” en acciones destructivas. Este trabajo se documentó completamente en GitHub con evidencias visuales y commits progresivos.
+
+## 2. Metodología
+Se siguió exactamente el proceso del laboratorio: 
+- Selección de app y flujos → configuración del repositorio → ejecución de evaluación recorriendo cada flujo dos veces (experiencia natural + inspección heurística) → cálculo de severidad → redacción del reporte.
+Herramientas: celular Android, capturas nativas, GitHub Desktop y VS Code. 
+Alcance: solo los tres flujos definidos, mínimo 10 hallazgos, mínimo 5 heurísticas distintas. Se cumplieron todos los checkpoints.
+
+## 3. Hallazgos por flujo
+**Flujo A – Registro y Onboarding**  
+- H1-A: Falta de feedback visible al escribir credenciales  
+- H3-A: No hay botón “Saltar” claro en sugerencias  
+- H9-A: Mensaje de error genérico sin solución  
+
+**Flujo B – Búsqueda y Exploración**  
+- H2-B: Términos que no coinciden con lenguaje real del usuario  
+- H4-B: Iconos de corazón y comentario cambian de posición  
+- H5-B: Búsqueda de hashtags sin sugerencias fuertes  
+- H7-B: No existe atajo rápido entre Reels y Feed  
+- H11-B: Palabra “Repost” poco clara en Colombia  
+
+**Flujo C – Perfil y Configuración**  
+- H6-C: Camino para cambiar foto de perfil poco intuitivo  
+- H8-C: Pantalla de Ajustes sobrecargada visualmente  
+- H10-C: Sin ayuda contextual en Privacidad  
+- H12-C: Bloquear usuario sin opción fácil de deshacer (severidad 4)
+## 4. Tabla de priorización consolidada
+| Prioridad | ID     | Heurística violada                              | Severidad final | Impacto en usuario                                                  | Recomendación                                                                                        |
+|-----------|--------|-------------------------------------------------|-----------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| 1         | H4-B   | H4 - Consistencia y estándares                  | 4               | El usuario se confunde constantemente al cambiar entre Feed y Reels | Unificar posición, tamaño y estilo de todos los iconos (corazón, comentario, guardar) en toda la app |
+| 2         | H3-C   | H3 - Control y libertad del usuario             | 4               | El usuario no puede revertir el bloqueo y se siente atrapado        | Agregar toast con botón “Deshacer” durante 5 segundos después de bloquear                            |
+| 3         | H1-A   | H1 - Visibilidad del estado del sistema         | 3               | No sabe si escribió mal la contraseña o si la app falló             | Mostrar mensaje específico (“Contraseña incorrecta”) + enlace grande “Olvidaste tu contraseña?”      |
+| 4         | H8-C   | H8 - Estética y diseño minimalista              | 3               | Sobrecarga visual y dificultad para encontrar opciones              | Agrupar ajustes en tarjetas/secciones con más espaciado y encabezados claros                         |
+| 5         | H6-C   | H6 - Reconocimiento antes que memoria           | 3               | Usuario debe recordar 4 pasos para cambiar foto                     | Agregar botón directo “Cambiar foto de perfil” en la parte superior del perfil                       |
+| 6         | H9-A   | H9 - Ayuda a reconocer y recuperarse de errores | 3               | Error genérico sin solución clara                                   | Incluir pasos rápidos o enlace directo al Centro de ayuda                                            |
+| 7         | H4-C   | H4 - Consistencia y estándares                  | 3               | Botón “Guardar” en posición no estándar para Android                | Mover botón “Guardar” a la parte inferior (estilo Material Design)                                   |
+| 8         | H3-A   | H3 - Control y libertad del usuario             | 2               | Se siente obligado a seguir cuentas en onboarding                   | Agregar botón grande y visible “Saltar” o “Ahora no”                                                 |
+| 9         | H2-B   | H2 - Coincidencia con el mundo real             | 2               | Palabra “Repost” no es familiar en Colombia                         | Cambiar a “Compartir” o “Republicar” según región                                                    |
+| 10        | H5-B   | H5 - Prevención de errores                      | 2               | Errores frecuentes al escribir hashtags sin ayuda                   | Activar autocorrección fuerte y mostrar sugerencias populares                                        |
+| 11        | H7-B   | H7 - Flexibilidad y eficiencia de uso           | 2               | Tener que bajar mucho para cambiar de Reels a Feed                  | Agregar doble toque en barra inferior o gesto de swipe para cambiar rápido                           |
+| 12        | H10-C  | H10 - Ayuda y documentación                     | 1               | Ninguna ayuda contextual en opciones de privacidad                  | Agregar pequeños iconos de “?” con tooltip o enlace a explicación                                    |
